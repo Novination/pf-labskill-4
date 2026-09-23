@@ -1,51 +1,60 @@
-#include <iostream>
+#include<iostream>
+#include<string>
 using namespace std;
 
-string getDays(int dayNumber){ // Retrieves the name of the day by number
-	switch (dayNumber){
-		case 1:
-			return "Monday";
-		case 2:
-			return "Tuesday";
-		case 3:
-			return "Wednesday";
-		case 4:
-			return "Thursday";
-		case 5:
-			return "Friday";
-		case 6:
-			return "Saturday";
-		case 7:
-			return "Sunday";
-		default:
-			cout << "Invalid Day Number!";
-			break;
-	}
+string getDay(int dayNumber){
+	if(dayNumber == 1)
+	return"Monday";
+	
+	else if (dayNumber == 2)
+	return "Tuesday";
+	
+	else if (dayNumber == 3)
+	return "Wednesday";
+	
+	else if (dayNumber == 4)
+	return "Thursday";
+	
+	else if (dayNumber == 5)
+	return "Friday";
+	
+	else if (dayNumber == 6)
+	return "Saturday";
+	
+	else 
+	return "Sunday";
+	
 }
 
-void compareTemperature(){
-	double curTemp, highTemp;
-	string curDay, highDays;
+void Temperature(){
+	int temp, highest=0;
+	string day,  highestDay = " ";
 	
-	for (int i = 1; i <= 7; i++){ // Reads and compares the highest temperature and loops 7 times (per day)
-		curDay = getDays(i);
+	for(int i=1; i<=7; i++){
 		
-		cout << "Enter temperature for " << curDay << " (Celsius): ";
-		cin >> curTemp;
+		day=getDay(i);
 		
-		if (curTemp > highTemp){
-			highTemp = curTemp;
-			highDays = curDay;
-		} else if (curTemp == highTemp) {
-			highDays = highDays + ", " + curDay;
+		cout << "Enter temperature for " << day << "(Celsius): ";
+		cin >> temp;
+		
+		if(temp>highest){
+			
+			highest = temp;
+			highestDay = day;
+		}
+		
+		else if (temp == highest){
+			highestDay = highestDay + ","+day;
 		}
 	}
 	
-	cout << endl << "The highest temperature is " << highTemp << " on " << highDays << endl;
+	cout << "The highest temperature is "<< highest << " on " << highestDay;
 }
 
-int main(){
-	compareTemperature();
-	
+int main()
+{
+		
+	Temperature();
+		
 	return 0;
 }
